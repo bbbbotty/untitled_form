@@ -6,9 +6,11 @@
         function register() {
             localStorage.setItem('name', document.getElementById('name').value);
             localStorage.setItem('phone', document.getElementById('phone').value);
+            alert('已登記至瀏覧器');
         }
         function unregister() {
             localStorage.clear();
+            alert('已取消');
         }
         function load() {
             document.getElementById('name').value = localStorage.getItem('name');

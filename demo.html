@@ -3,8 +3,8 @@
     <title>無名小方</title>
     <style>
     #qrcode {
-        width:256px;
-        height:256px;
+        width:500px;
+        height:500px;
         margin-top:15px;
     }
 
@@ -19,10 +19,11 @@
 <body>
     <div id="qrcode"></div>
     <script>
-    var url = 'data=%7B"form"%3A"https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSc4HkJNj64JQuM13ahVODnv0LGWKep8rbKiC76QEB7YP_n5hA%2Fviewform%3Fentry.774757361%3Dname%26entry.1391007261%3Dphone"%7D'
-    var data = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/redirect.html?data=' + url;
-    var qrcode = new QRCode("qrcode");
-    qrcode.makeCode(data);
+        var url = '%7B"form"%3A"https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSc4HkJNj64JQuM13ahVODnv0LGWKep8rbKiC76QEB7YP_n5hA%2Fviewform%3Fentry.774757361%3Dname%26entry.1391007261%3Dphone"%7D'
+        var data = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/redirect.html?data=' + url;
+        var qrcode = new QRCode("qrcode");
+        qrcode.makeCode(data);
+        document.write('<p><a href=\'' + data + '\'>測試</a><p>')
     </script>
 </body>
 </html>
