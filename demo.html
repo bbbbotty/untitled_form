@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>無名小方</title>
+    <style>
+    #qrcode {
+        width:256px;
+        height:256px;
+        margin-top:15px;
+    }
+
+    img {
+        width: 500px;
+        padding: 15px;
+    }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js"></script>
+</head>
+<body>
+    <div id="qrcode"></div>
+    <script>
+    var url = 'data=%7B"form"%3A"https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSc4HkJNj64JQuM13ahVODnv0LGWKep8rbKiC76QEB7YP_n5hA%2Fviewform%3Fentry.774757361%3Dname%26entry.1391007261%3Dphone"%7D'
+    var data = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/redirect.html?data=' + url;
+    var qrcode = new QRCode("qrcode");
+    qrcode.makeCode(data);
+    </script>
+</body>
+</html>

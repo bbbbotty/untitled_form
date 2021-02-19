@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>無名小方</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    img {
+        width: 100%;
+        max-width: 500px;
+        padding: 15px;
+    }
+
+    #qrcode {
+        width:256px;
+        height:256px;
+        margin-top:15px;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @media print
+    {    
+        .no-print, .no-print *
+        {
+            display: none !important;
+        }
+    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="no-print">
+        <ol>
+            <li>
+                用 <a href="https://docs.google.com/forms/u/0/">Google Forms</a> 開新 Form<br/>
+                <img src="1.png"/>
+            </li>
+            <li>
+                加入問題後，選擇 Get pre-filled link<br/>
+                <img src="2.png"/>
+            </li>
+            <li>
+                將姓名答案填 <code>name</code>, 電話答案填 <code>phone</code>, 再按 Get Link 同 COPY LINK 獲取連結<br/>
+                <img src="3.png"/>
+            </li>
+            <li>
+                將連結貼上以下方格
+            </li>
+            <li>
+                印出 QR Code
+            </li>
+        </ol>
+
+        <input id="text" type="text" style="width:80%" onchange="makeCode()"/><br />
+        <input type="button" value="產生 QR Code" onclick="makeCode()"/>
+        <input type="button" value="打印 QR Code" onclick="print()"/>
+    </div>
+    <div id="qrcode"></div>
+    <script>
+    var qrcode = new QRCode("qrcode");
+
+    function makeCode () {    
+        var url = document.getElementById("text").value;
+        var data = {form: url}
+        data = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/redirect.html?data=' + encodeURIComponent(JSON.stringify(data));
+        console.log(data);
+        qrcode.makeCode(data);
+    }
+    </script>
+</body>
+</html>

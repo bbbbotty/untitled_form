@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>無名小方</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var p = JSON.parse(urlParams.get('data'))
+
+        function load() {
+            if (localStorage.getItem('name') != null) {
+                fillForm();
+            }
+        }
+
+        function register() {
+            localStorage.setItem('name', document.getElementById('name').value);
+            localStorage.setItem('phone', document.getElementById('phone').value);
+        }
+
+        function fillForm() {
+            var name = localStorage.getItem('name');
+            var phone = localStorage.getItem('phone');
+            var url = p.form.replace('=name', '=' + name).replace('=phone', '=' + phone);
+            if (p.form.startsWith('https://docs.google.com/forms/')){
+                window.location.href = url;
+            } else {
+                alert('Not a Google Form URL');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", load);
+    </script>
+</head>
+<body>
+    <p>所有登記資料將存於瀏覧器內，並不會上傳至任何伺服器</p>
+    <a href="register.html">登記 (本機帳號)</a>
+    <a href="shop.html">建立Google Form</a>
+    <a href="demo.html">示範</a>
+    <form>
+        姓名 <input type="text" id="name"/><br/>
+        電話 <input type="text" id="phone"/><br/>
+        <input type="button" value="只登記" onclick="register()" />
+        <input type="button" value="登記及填表" onclick="register();fillForm();" />
+        <input type="button" value="只填表" onclick="fillForm()" />
+    </form>
+</body>
+</html>

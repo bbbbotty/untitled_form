@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>無名小方</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function register() {
+            localStorage.setItem('name', document.getElementById('name').value);
+            localStorage.setItem('phone', document.getElementById('phone').value);
+        }
+        function unregister() {
+            localStorage.clear();
+        }
+        function load() {
+            document.getElementById('name').value = localStorage.getItem('name');
+            document.getElementById('phone').value = localStorage.getItem('phone');
+        }
+
+        document.addEventListener("DOMContentLoaded", load);
+    </script>
+</head>
+<body>
+<p>所有登記資料將存於瀏覧器內，並不會上傳至任何伺服器</p>
+<form>
+    姓名 <input type="text" id="name"/><br/>
+    電話 <input type="text" id="phone"/><br/>
+    <input type="button" value="登記" onclick="register()" />
+    <input type="button" value="取消登記" onclick="unregister()" />
+</form>
+</body>
+</html>
